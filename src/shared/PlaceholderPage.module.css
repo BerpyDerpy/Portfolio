@@ -1,0 +1,179 @@
+.page {
+  --hue: 28;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vw, 40px);
+  max-width: 760px;
+  padding-bottom: 36px;
+}
+
+/* ---- Header ---------------------------------------------------------- */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headTop {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 28px);
+}
+
+.title {
+  font-size: clamp(30px, 5.4vw, 52px);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.field {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--hue) 38% 38%);
+  margin-top: 8px;
+}
+
+.note {
+  font-size: clamp(19px, 2.4vw, 26px);
+  color: hsl(var(--hue) 36% 36%);
+  transform: rotate(-0.8deg);
+  max-width: 36ch;
+}
+
+/* ---- Body ------------------------------------------------------------ */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 34px);
+}
+
+.lead {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+/* Empty ruled lines, drawn in faded ink. */
+.ruled {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.rule {
+  height: 0;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--ink-faint) 38%, transparent);
+}
+.rule:nth-child(2) {
+  width: 92%;
+}
+.rule:nth-child(4) {
+  width: 78%;
+}
+.rule:nth-child(5) {
+  width: 40%;
+}
+
+.slots {
+  display: flex;
+  gap: clamp(20px, 4vw, 40px);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* A taped-down empty photo / figure placeholder. */
+.photoSlot {
+  position: relative;
+  margin: 0;
+  width: min(280px, 100%);
+  aspect-ratio: 4 / 3;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 10px,
+      color-mix(in srgb, var(--ink-faint) 12%, transparent) 10px 11px
+    ),
+    var(--paper-2);
+  border: 1.5px dashed color-mix(in srgb, var(--ink-faint) 55%, transparent);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  transform: rotate(-1deg);
+  box-shadow: var(--shadow-soft);
+}
+.photoSlot::before,
+.photoSlot::after {
+  content: '';
+  position: absolute;
+  width: 64px;
+  height: 22px;
+  top: -11px;
+  background: var(--tape);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+.photoSlot::before {
+  left: -8px;
+  transform: rotate(-24deg);
+}
+.photoSlot::after {
+  right: -8px;
+  transform: rotate(24deg);
+}
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: var(--hand);
+  font-size: clamp(18px, 2.2vw, 23px);
+  color: var(--ink-blue);
+}
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.box {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink-soft);
+  border-radius: 3px;
+}
+.boxDone {
+  position: relative;
+  border-color: hsl(var(--hue) 45% 40%);
+}
+.boxDone::after {
+  content: '✓';
+  position: absolute;
+  inset: -8px -2px 0 0;
+  font-size: 26px;
+  color: var(--ink-red);
+  font-family: var(--hand);
+  line-height: 1;
+}
+
+.foot {
+  margin-top: auto;
+  text-align: right;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 600px) {
+  .titleBlock {
+    align-items: flex-start;
+  }
+}

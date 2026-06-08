@@ -1,1 +1,203 @@
-/* styles.module.css */
+/* Section 05 — Deep-Sea Biodiversity Pipeline. Marine-journal personality. */
+.page {
+  --hue: 188;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 36px);
+  max-width: 780px;
+  padding-bottom: 36px;
+}
+
+/* ---- Specimen tag — pinned sample ID, like a museum tag ---- */
+.tag {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  padding: 6px 12px 5px;
+  border: 1.5px solid hsl(var(--hue) 40% 48%);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--paper) 85%, hsl(var(--hue) 40% 70%));
+  transform: rotate(2.2deg);
+  opacity: 0.78;
+  pointer-events: none;
+}
+.tagId {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  color: hsl(var(--hue) 55% 30%);
+}
+.tagSrc {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+/* ---- Header ---- */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 120px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.taxa {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  color: hsl(var(--hue) 45% 38%);
+  border: 1px solid hsl(var(--hue) 40% 55% / 0.5);
+  border-radius: 3px;
+  padding: 3px 8px;
+  background: hsl(var(--hue) 50% 55% / 0.08);
+}
+
+.title {
+  font-size: clamp(28px, 4.8vw, 48px);
+  line-height: 1.04;
+  margin-top: 4px;
+}
+.bio {
+  color: hsl(var(--hue) 55% 32%);
+}
+.field {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--hue) 44% 38%);
+}
+.oneliner {
+  font-size: clamp(17px, 2.2vw, 21px);
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin-top: 4px;
+}
+
+/* ---- DNA helix + wave diagram ---- */
+.diagram {
+  margin: 0;
+  align-self: center;
+  width: min(460px, 100%);
+  padding: 10px 14px 8px;
+  background:
+    radial-gradient(130% 110% at 50% 110%, hsl(var(--hue) 40% 80% / 0.25), transparent 60%);
+  border-radius: 8px;
+}
+.diagram svg {
+  width: 100%;
+  height: auto;
+}
+
+.wave {
+  fill: none;
+  stroke: hsl(var(--hue) 45% 55%);
+  stroke-width: 1.6;
+  opacity: 0.5;
+}
+.wave2 {
+  fill: none;
+  stroke: hsl(var(--hue) 35% 65%);
+  stroke-width: 1;
+  opacity: 0.3;
+}
+
+.strand {
+  fill: none;
+  stroke: hsl(var(--hue) 55% 35%);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.rung {
+  stroke: hsl(var(--hue) 40% 50%);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 2;
+  opacity: 0.6;
+}
+.drop {
+  fill: hsl(var(--hue) 50% 45%);
+  opacity: 0.55;
+}
+.base {
+  font-family: var(--hand);
+  font-size: 12px;
+  fill: hsl(var(--hue) 50% 35%);
+  opacity: 0.7;
+}
+
+.cap {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+/* ---- Body ---- */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.6vw, 30px);
+}
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 38px);
+}
+.h2 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.h2::before {
+  content: '~ ';
+  color: hsl(var(--hue) 50% 40%);
+  font-weight: 400;
+}
+.body p {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+}
+
+.aside {
+  font-size: 1.18rem;
+  color: hsl(var(--hue) 45% 33%);
+  transform: rotate(-0.6deg);
+  margin: 4px 0;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 620px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+  .head {
+    padding-right: 0;
+  }
+  .tag {
+    position: relative;
+    top: auto;
+    right: auto;
+    align-self: flex-end;
+    transform: rotate(1.5deg);
+    margin-bottom: 4px;
+  }
+}

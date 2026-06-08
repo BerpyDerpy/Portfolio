@@ -1,0 +1,120 @@
+/* ============================================================================
+   TabNav — the binder divider tabs stacked down the spine.
+   Each tab physically juts out; the active one slides forward & brightens.
+   ========================================================================== */
+
+.rail {
+  position: absolute;
+  top: clamp(58px, 12%, 120px);
+  right: -2px;            /* tuck the tab roots into the spine edge */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3;
+  align-items: flex-end;
+}
+
+.cover {
+  /* the small "cover/home" handle above the section tabs */
+  margin-bottom: 14px;
+}
+
+.tab {
+  --hue: 28;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: clamp(60px, 7.4vw, 104px);
+  padding: 9px 8px 9px 12px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(245, 240, 226, 0.92);
+  text-align: left;
+  border-radius: 0 7px 7px 0;
+  background:
+    linear-gradient(
+      90deg,
+      hsl(var(--hue) 32% 30%) 0%,
+      hsl(var(--hue) 30% 22%) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    2px 3px 6px rgba(0, 0, 0, 0.35);
+  transform: translateX(-46%);
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s ease,
+    box-shadow 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tab:hover {
+  transform: translateX(-30%);
+  filter: brightness(1.12);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+  transform: translateX(-20%);
+}
+
+/* Active tab pulls all the way out and reads bright, like the open section. */
+.active {
+  transform: translateX(2%);
+  color: #fff;
+  background:
+    linear-gradient(
+      90deg,
+      hsl(var(--hue) 55% 46%) 0%,
+      hsl(var(--hue) 50% 36%) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.active:hover {
+  transform: translateX(4%);
+}
+
+/* tiny brass rivet on each tab for that binder-hardware feel */
+.rivet {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d488, var(--brass));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.num {
+  font-family: var(--mono);
+  font-size: 0.78em;
+  opacity: 0.78;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 720px) {
+  .rail {
+    top: clamp(40px, 9%, 90px);
+    gap: 7px;
+  }
+  .tab {
+    width: clamp(48px, 16vw, 78px);
+    padding: 7px 6px 7px 9px;
+  }
+  .num {
+    display: none;
+  }
+}

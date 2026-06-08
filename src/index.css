@@ -1,111 +1,114 @@
+/* ============================================================================
+   Mahit Hazari — Lab Notebook
+   A researcher's notebook: grid paper, ink, tabbed binder, paper grain.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* --- Paper & ink palette --------------------------------------------- */
+  --paper: #f4efe2;          /* aged cream paper                          */
+  --paper-2: #efe8d6;        /* slightly deeper, for shadowed sheets      */
+  --paper-edge: #e4dac0;     /* paper edge / binder gutter               */
+  --grid: #f0f1f4;           /* engineering grid blue (very faint)       */
+  --grid-strong: #e8eaef;    /* major grid line (very faint)            */
+  --margin-line: #d98b88;    /* the red margin rule                     */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --ink: #20242c;            /* primary fountain-pen ink (near black)    */
+  --ink-soft: #43423f;       /* faded ink for body                       */
+  --ink-faint: #7d7468;      /* pencil grey                              */
+  --ink-blue: #2f4b7c;       /* ballpoint blue                          */
+  --ink-red: #b03a2e;        /* correction red                         */
+  --accent: #c98a1a;         /* highlighter ochre / brass tab           */
+  --accent-soft: #e8c879;
+  --highlight: rgba(231, 198, 84, 0.42); /* marker swipe                */
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  /* --- Binder / cover --------------------------------------------------- */
+  --cover: #3a3f3a;          /* dark cloth board cover                   */
+  --cover-2: #2c302c;
+  --spine: #2a2e2a;
+  --brass: #b9952f;          /* tab hardware                            */
+
+  --tape: rgba(214, 200, 160, 0.55); /* washi / masking tape           */
+  --shadow-soft: 0 1px 2px rgba(40, 30, 12, 0.12),
+    0 8px 22px rgba(40, 30, 12, 0.14);
+  --shadow-deep: 0 18px 50px rgba(20, 16, 8, 0.35);
+
+  /* --- Type ------------------------------------------------------------ */
+  --hand: 'Caveat', 'Segoe Script', cursive;
+  --serif: 'Spectral', Georgia, 'Times New Roman', serif;
+  --mono: 'Spline Sans Mono', ui-monospace, Consolas, monospace;
+
+  font: 17px/1.6 var(--serif);
+  color: var(--ink-soft);
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+body {
+  /* The desk: a warm, dark surface the notebook rests on. */
+  background:
+    radial-gradient(120% 90% at 50% -10%, #4a443a 0%, #322e28 55%, #232019 100%);
+  color: var(--ink-soft);
+  overflow-x: hidden;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
 }
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+a {
+  color: var(--ink-blue);
+  text-decoration: none;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+::selection {
+  background: var(--highlight);
+  color: var(--ink);
+}
+
+code,
+.mono {
+  font-family: var(--mono);
+  font-size: 0.86em;
+}
+
+/* Reduced motion: kill the ambient drift & page flips. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
